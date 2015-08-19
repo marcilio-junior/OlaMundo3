@@ -4,13 +4,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.app.AlertDialog;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    EditText edNome;
+    Button btOK;
+    TextView tvNome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        edNome = (EditText) findViewById(R.id.edNome);
+        btOK = (Button) findViewById(R.id.btOK);
+        tvNome = (TextView) findViewById(R.id.tvNome);
+
+        btOK.setOnClickListener(this);
+    }
+
+    public void onClick(View v){
+        String nome = edNome.getText().toString();
+
+        if(!nome.trim().isEmpty()){
+            tvNome.setText("Olá, " + nome);
+        }else{
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle("Aviso");
+            dlg.setMessage("Informe o nome!");
+            dlg.setIcon(R.drawable.ic_warning);
+            dlg.setPositiveButton("OK",null);
+            dlg.show();
+        }
     }
 
     @Override

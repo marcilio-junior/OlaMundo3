@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="Nome">Digite o seu nome:</string>
+    <string name="Ok">OK</string>
 </resources>
